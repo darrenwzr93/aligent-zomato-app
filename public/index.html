@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Zomato App</title>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="/assets/js/index.js"></script>
+		<script src="/assets/js/getjson.js"></script>
+	</head>
+	<body>
+		<div class="main">
+			<div class="container">
+				<div class="filter">
+					<div class="filter__left">
+						<div class="filter__left-category">
+							<h4>CATEGORY</h4>
+							<form id="category-filter"></form>
+						</div>
+						<div class="filter__left-cuisine">
+							<h4>CUISINE</h4>
+							<form id="cuisine-filter"></form>
+						</div>
+					</div>
+					<div class="filter__right">
+						<div class="filter__right-slider-container">
+							<h4>RATING</h4>
+							<div class="filter__right-slider" id="slider-rating"></div>
+							<span class="slider-value-min">0</span>
+							<span class="slider-value-max">5</span>
+						</div>
+						<div class="filter__right-slider-container">
+							<h4>COST</h4>
+							<div class="filter__right-slider" id="slider-cost"></div>
+							<span class="slider-value-min">$</span>
+							<span class="slider-value-max">$$$$$</span>
+						</div>
+					</div>
+				</div>
+				<div class="display">
+					<ul class="display__restaurants" id="restaurant-list">
+						<li>RESULTS</li>
+					</ul>
+					<div class="display__details"></div>
+						<div class="display__details-image">
+							<img class="display__details-thumbnail">
+						</div>
+						<div class="display__details-content">
+							<p class="display__details-name"></p>
+							<p class="display__details-address"></p>
+							<p class="display__details-bookings"></p>
+							<p class="display__details-delivery"></p>
+							<p class="display__details-cuisines"></p>
+							<p class="display__details-phone"></p>
+							<p class="display__details-opening"></p>
+						</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
