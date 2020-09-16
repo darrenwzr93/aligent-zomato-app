@@ -11,7 +11,7 @@ async function postData(url) {
 	  credentials: 'same-origin',
 	  headers: {
 		'Content-Type': 'application/json',
-		'User-Key': '434882b75814cf577fb2cef0fe69f8ba' // API key generated from https://developers.zomato.com/api#headline2
+		'User-Key': 'd58fab066f0fef1dcf5ba10953846cd1' // API key generated from https://developers.zomato.com/api#headline2
 	  },
 	  redirect: 'follow',
 	  referrerPolicy: 'no-referrer',
@@ -19,29 +19,35 @@ async function postData(url) {
 	return response.json();
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 	// Get restaurant categories
 	postData($domain + '/categories')
 	.then(data=> {
 		$.each(data.categories.map((o) => o.categories), function(index, category) {
 			let $name = category.name;
 
-			$('#category-filter').append('<input type="checkbox" id="' + index + '"><label for="' + index + '">' + $name + '</label>')
+			$('#category-filter').append('<input type="checkbox" name="category" id="' + index + '"value = "' + index + '"><label for="' + index + '">' + $name + '</label>')
 		})
 	})
 
 	// Get restaurant cuisines
-	postData($domain + '/cuisines?city_id=297')
+	postData($domain + '/cuisines?city_id=297') // query cuisines in Adelaide only
 	.then(data=> {
 		$.each(data.cuisines.map((o) => o.cuisine), function(index, cuisine) {
 			let $name = cuisine.cuisine_name;
 
-			$('#cuisine-filter').append('<input type="checkbox" id="' + index + '"><label for="' + index + '">' + $name + '</label>')
+			$('#cuisines-filter').append('<input type="checkbox" name="cuisines" id="' + index + '"value = "' + index + '">' + $name + '</label>')
 		})
 	})
 
-	// Get restaurants
-	postData($url)
+	loadRestaurant($url);
+});
+
+// Load Restaurant results
+function loadRestaurant(param) {
+	console.log($url + param);
+	$('#restaurant-list').empty();
+	postData($url + param)
 	.then(data=> {
 		$.each(data.restaurants.map((o) => o.restaurant), function(index, restaurant) {
 			let $name = restaurant.name;
@@ -50,16 +56,16 @@ $(document).ready(function() {
 			$('#restaurant-list').append('<li class="display__restaurant" id="' + $id + '">' + $name + '</li>');
 		})
 	})
-});
+}
 
-// Get restaurant by ID
-function getRestaurant(id) {
-	postData($domain + '/restaurant?res_id=' + id)
+// Get restaurant
+function getRestaurant(param) {
+	postData($domain + param)
 	.then(data=> {
 		let $name = data.name;
 		let $thumbnail = data.thumb;
 		let $address = data.location.address;
-		let $bookings = data.is_zomato_book_res;
+		let $bookings = data.has_table_booking;
 		let $delivery = data.is_delivering_now;
 		let $cuisines = data.cuisines;
 		let $phone = data.phone_numbers;
