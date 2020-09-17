@@ -1,6 +1,7 @@
 let $domain = 'https://developers.zomato.com/api/v2.1'; // Zomato API domain
 let $query = '/search?entity_id=297&entity_type=city'; // Set city query to Adelaide
 let $url = $domain + $query;
+let $data = [];
 let $filter = '';
 let $minRating = 0;
 let $maxRating = 5;
@@ -51,21 +52,27 @@ $(document).ready(function () {
 // Load restaurant results
 function loadRestaurant() {
 	$('#restaurant-list').empty();
-	postData($url + $filter)
-	.then(data=> {
-		data.restaurants = filterRange(data.restaurants);
-		if(data.restaurants.length > 1) {
-			$('#restaurant-list').append('<li><strong>RESULTS</strong></li>');
-			$.each(data.restaurants.map((o) => o.restaurant), function(index, restaurant) {
-				let $name = restaurant.name;
-				let $id = restaurant.id;
+	$('#restaurant-list').append('<li><strong>RESULTS</strong></li>');
+	$('.display__details-results').css('display', 'none');
 
-				$('#restaurant-list').append('<li class="display__restaurant" id="' + $id + '">' + $name + '</li>');
-			})
-		} else {
-			$('#restaurant-list').append('<li><strong>NO RESULTS FOUND</strong></li>');
-		}
-	})
+	let $start = 0;
+
+	// Do this to return 100 restaurant results
+	for(var i = 0; i < 4; i++ ) {
+		postData($url + $filter + '&start=' + $start)
+		.then(data=> {
+			data.restaurants = filterRange(data.restaurants);
+			if(data.restaurants.length > 1) {
+				$.each(data.restaurants.map((o) => o.restaurant), function(index, restaurant) {
+					let $name = restaurant.name;
+					let $id = restaurant.id;
+
+					$('#restaurant-list').append('<li class="display__restaurant" id="' + $id + '">' + $name + '</li>');
+				})
+			}
+		})
+		$start += 20;
+	}
 }
 
 // Get restaurant and display restaurant details
