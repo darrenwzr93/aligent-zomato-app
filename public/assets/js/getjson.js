@@ -1,6 +1,11 @@
 let $domain = 'https://developers.zomato.com/api/v2.1'; // Zomato API domain
 let $query = '/search?entity_id=297&entity_type=city'; // Set city query to Adelaide
 let $url = $domain + $query;
+let $filter = '';
+let $minRating = 0;
+let $maxRating = 5;
+let $minCost = 0;
+let $maxCost = 5;
 
 // Fetch JSON response
 async function postData(url) {
@@ -40,15 +45,15 @@ $(document).ready(function () {
 		})
 	})
 
-	loadRestaurant($url);
+	loadRestaurant();
 });
 
-// Load Restaurant results
-function loadRestaurant(param) {
-	console.log($url + param);
+// Load restaurant results
+function loadRestaurant() {
 	$('#restaurant-list').empty();
-	postData($url + param)
+	postData($url + $filter)
 	.then(data=> {
+		data.restaurants = filterRange(data.restaurants);
 		$.each(data.restaurants.map((o) => o.restaurant), function(index, restaurant) {
 			let $name = restaurant.name;
 			let $id = restaurant.id;
@@ -58,7 +63,7 @@ function loadRestaurant(param) {
 	})
 }
 
-// Get restaurant
+// Get restaurant and display restaurant details
 function getRestaurant(param) {
 	postData($domain + param)
 	.then(data=> {
@@ -80,4 +85,15 @@ function getRestaurant(param) {
 		$('.display__details-phone').text($phone);
 		$('.display__details-opening').text($opening);
 	})
+}
+
+// Filter restaurant by category and cuisines
+function filterRestaurant(query) {
+	$filter = query;
+	loadRestaurant();
+}
+
+// Filter restaurant by range
+function filterRange(data) {
+	return data.filter(val => val.restaurant.user_rating.aggregate_rating >= $minRating && val.restaurant.user_rating.aggregate_rating <= $maxRating && val.restaurant.price_range >= $minCost && val.restaurant.price_range <= $maxCost);
 }
