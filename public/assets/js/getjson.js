@@ -5,7 +5,7 @@ let $data = [];
 let $filter = '';
 let $minRating = 0;
 let $maxRating = 5;
-let $minCost = 0;
+let $minCost = 1;
 let $maxCost = 5;
 
 // Fetch JSON response

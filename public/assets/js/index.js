@@ -4,6 +4,15 @@ $(function() {
 		min: 0,
 		max: 5,
 		values: [ 0, 5 ],
+		// Prevent slider handles from overlapping
+		slide: function( event, ui ) {
+			if ( ( ui.values[ 0 ] ) >= ui.values[ 1 ] ) {
+				return false;
+			}
+			if ( ( ui.values[ 1 ] ) <= ui.values[ 0 ] ) {
+				return false;
+			}
+		},
 		change: function( event, ui ) {
 			$minRating = ui.values[0];
 			$maxRating = ui.values[1];
@@ -15,9 +24,18 @@ $(function() {
 $(function() {
     $('#slider-cost').slider({
       range: true,
-      min: 0,
+      min: 1,
       max: 5,
-	  values: [ 0, 5 ],
+	  values: [ 1, 5 ],
+	  // Prevent slider handles from overlapping
+	  slide: function( event, ui ) {
+		if ( ( ui.values[ 0 ] ) >= ui.values[ 1 ] ) {
+			return false;
+		}
+		if ( ( ui.values[ 1 ] ) <= ui.values[ 0 ] ) {
+			return false;
+		}
+	},
 	  change: function( event, ui ) {
 		$minCost = ui.values[0];
 		$maxCost = ui.values[1];
