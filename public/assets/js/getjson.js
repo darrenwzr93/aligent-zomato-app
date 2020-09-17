@@ -58,9 +58,10 @@ function loadRestaurant() {
 	let $start = 0;
 
 	// Do this to return 100 restaurant results
-	for(var i = 0; i < 4; i++ ) {
+	for(var i = 0; i < 5; i++) {
 		postData($url + $filter + '&start=' + $start)
 		.then(data=> {
+			console.log(data);
 			data.restaurants = filterRange(data.restaurants);
 			if(data.restaurants.length > 1) {
 				$.each(data.restaurants.map((o) => o.restaurant), function(index, restaurant) {
@@ -83,7 +84,7 @@ function getRestaurant(param) {
 		let $thumbnail = data.thumb;
 		let $address = data.location.address;
 		let $bookings = data.has_table_booking;
-		let $delivery = data.is_delivering_now;
+		let $delivery = data.highlights;
 		let $cuisines = data.cuisines;
 		let $phone = data.phone_numbers;
 		let $opening = data.timings;
@@ -91,20 +92,23 @@ function getRestaurant(param) {
 		$('.display__details-image img').attr('src', $thumbnail);
 		$('#restaurant-name').text($name);
 		$('#restaurant-address').text($address);
-		if( $bookings == 0) {
+
+		if($bookings == 0) {
 			$('#restaurant-bookings').addClass('false');
 			$('#restaurant-bookings').text('No bookings');
 		} else {
 			$('#restaurant-bookings').addClass('true');
 			$('#restaurant-bookings').text('Bookings available');
 		}
-		if( $delivery == 0) {
-			$('#restaurant-delivery').addClass('false');
-			$('#restaurant-delivery').text('No delivery');
-		} else {
+
+		if($delivery.indexOf('Delivery') > -1) {
 			$('#restaurant-delivery').addClass('true');
 			$('#restaurant-delivery').text('Delivery available');
+		} else {
+			$('#restaurant-delivery').addClass('false');
+			$('#restaurant-delivery').text('No delivery');
 		}
+
 		$('#restaurant-cuisines').text($cuisines);
 		$('#restaurant-phone').text($phone);
 		$('#restaurant-opening').text($opening);
