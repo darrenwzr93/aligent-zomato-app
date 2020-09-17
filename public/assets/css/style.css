@@ -19,8 +19,8 @@ p {
 }
 
 .main {
-	padding-left: 1.875rem;
-    padding-right: 1.875rem;
+	padding-left: 1rem;
+    padding-right: 1rem;
     max-width: 80rem;
     margin-left: auto;
     margin-right: auto;
@@ -210,5 +210,63 @@ p {
 	background: #b2b6b7;
 }
 
+@media only screen and (max-width: 1000px) {
+
+	.filter {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
 @media only screen and (max-width: 768px) {
+
+	.filter {
+		flex-flow: column;
+	}
+
+
+	.filter .checkbox {
+		min-width: 0;
+	}
+
+	.filter__left {
+		justify-content: space-between;
+	}
+
+	.filter__right {
+		flex: 1;
+	}
+
+	.filter__right-slider {
+		width: 100%;
+	}
+
+	.display__restaurants li {
+		padding: 15px;
+	}
+
+	.display__details {
+		padding: 20px;
+	}
+
+	.display__details-results {
+		flex-flow: wrap;
+	}
+
+	.display__details-image {
+		width: 100%;
+		padding-bottom: 75%;
+	}
+
+	.display__details-content {
+		width: 100%;
+		margin-left: 0;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+
+	.filter__left form {
+		grid-template-rows:  1fr 1fr 1fr 1fr 1fr 1fr;
+	}
 }
