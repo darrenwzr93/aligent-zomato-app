@@ -58,7 +58,7 @@ function loadRestaurant() {
 	let $start = 0;
 
 	// Do this to return 100 restaurant results
-	for(var i = 0; i < 4; i++ ) {
+	for(var i = 0; i < 5; i++) {
 		postData($url + $filter + '&start=' + $start)
 		.then(data=> {
 			data.restaurants = filterRange(data.restaurants);
