@@ -5,11 +5,11 @@ $(function() {
 		max: 5,
 		values: [ 0, 5 ],
 		slide: function( event, ui ) {
-			console.log(ui.values[0]);
-			console.log(ui.values[1]);
+			$minRating = ui.values[0];
+			$maxRating = ui.values[1];
+			loadRestaurant();
 		}
     });
-	$('#slider-rating').slider('values', 0) + $('#slider-rating').slider('values', 1);
 } );
 
 $(function() {
@@ -17,9 +17,13 @@ $(function() {
       range: true,
       min: 0,
       max: 5,
-      values: [ 0, 5 ],
+	  values: [ 0, 5 ],
+	  slide: function( event, ui ) {
+		$minCost = ui.values[0];
+		$maxCost = ui.values[1];
+		loadRestaurant();
+	}
     });
-    $('#slider-cost').slider('values', 0) + $('#slider-cost').slider('values', 1);
 } );
 
 $(document).on('click','.display__restaurant',function(){
@@ -50,8 +54,5 @@ $(document).on('change', 'input:checkbox', function(){
 		cuisinesQuery = '&' + cuisinesQuery;
 	}
 
-	let query = cuisinesQuery + categoryQuery;
-
-	// Load restaurants with new query parameters
-	loadRestaurant(query);
+	filterRestaurant(cuisinesQuery + categoryQuery);
 });
