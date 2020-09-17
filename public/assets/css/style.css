@@ -1,0 +1,76 @@
+body {
+	font-family: sans-serif;
+}
+
+.main {
+	padding-left: 1.875rem;
+    padding-right: 1.875rem;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filter {
+	display: flex;
+	padding: 40px;
+}
+
+.filter .checkbox {
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	min-width: 150px;
+	margin-bottom: 5px;
+}
+
+.filter .checkbox input {
+	background-color: grey;
+}
+
+.filter__left {
+	display: flex;
+	flex: 1;
+}
+
+.filter__left form {
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+	grid-auto-flow: column;
+}
+
+.filter__right {
+	display: flex;
+	flex-direction: column;
+}
+
+.filter__right .slider-value {
+	display: flex;
+	justify-content: space-between;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.filter__right-slider {
+	width: 250px;
+	background-color: #c5c5c5;
+	border: none !important;
+	border-radius: 10px !important;
+}
+
+.filter__right-slider .ui-widget-header {
+	background-color: #4bb5b1;
+}
+
+.filter__right-slider .ui-slider-handle {
+	border: 1px solid #4bb5b1;
+	border-radius: 10px;
+	width: 1em;
+	height: 1em;
+	top: -0.2em;
+}
+
+@media only screen and (max-width: 768px) {
+
+
+}

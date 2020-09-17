@@ -2,8 +2,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 		<title>Zomato App</title>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/assets/css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script src="/assets/js/index.js"></script>
@@ -15,36 +17,88 @@
 				<div class="filter">
 					<div class="filter__left">
 						<div class="filter__left-category">
-							<h4>CATEGORY</h4>
+							<h5>CATEGORY</h5>
 							<form id="category-filter">
-								<input type="checkbox" value="1" name="category" id="1">
-								<label for="1">Dining</label>
+								<div class="checkbox">
+									<input type="checkbox" value="1" name="category" id="1">
+									<label for="1">Dining</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="1" name="category" id="2">
+									<label for="2">Take-Away</label>
+								</div>
 							</form>
 						</div>
 						<div class="filter__left-cuisine">
-							<h4>CUISINE</h4>
+							<h5>CUISINE</h5>
 							<form id="cuisines-filter">
-								<input type="checkbox" value="1" name="cuisines" id="1">
-								<label for="1">Cafe Food</label>
-								<input type="checkbox" value="2" name="cuisines" id="2">
-								<label for="2">Coffee and Tea</label>
-								<input type="checkbox" value="3" name="cuisines" id="3">
-								<label for="3">Pizza</label>
+								<div class="checkbox">
+									<input type="checkbox" value="1" name="cuisines" id="1">
+									<label for="1">Cafe Food</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="2" name="cuisines" id="2">
+									<label for="2">Coffee and Tea</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="3" name="cuisines" id="3">
+									<label for="3">Pizza</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="4" name="cuisines" id="4">
+									<label for="4">Cafe Food</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="5" name="cuisines" id="5">
+									<label for="5">Coffee and Tea</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="6" name="cuisines" id="6">
+									<label for="6">Pizza</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="7" name="cuisines" id="7">
+									<label for="7">Cafe Food</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="8" name="cuisines" id="8">
+									<label for="8">Coffee and Tea</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="9" name="cuisines" id="9">
+									<label for="9">Pizza</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="10" name="cuisines" id="10">
+									<label for="10">Cafe Food</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="11" name="cuisines" id="11">
+									<label for="11">Coffee and Tea</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" value="12" name="cuisines" id="12">
+									<label for="12">Pizza</label>
+								</div>
 							</form>
 						</div>
 					</div>
 					<div class="filter__right">
 						<div class="filter__right-slider-container">
-							<h4>RATING</h4>
+							<h5>RATING</h5>
 							<div class="filter__right-slider" id="slider-rating"></div>
-							<span class="slider-value-min">0</span>
-							<span class="slider-value-max">5</span>
+							<div class="slider-value">
+								<span class="slider-value-min">0</span>
+								<span class="slider-value-max">5</span>
+							</div>
 						</div>
 						<div class="filter__right-slider-container">
-							<h4>COST</h4>
+							<h5>COST</h5>
 							<div class="filter__right-slider" id="slider-cost"></div>
-							<span class="slider-value-min">$</span>
-							<span class="slider-value-max">$$$$$</span>
+							<div class="slider-value">
+								<span class="slider-value-min">$</span>
+								<span class="slider-value-max">$$$$$</span>
+							</div>
 						</div>
 					</div>
 				</div>

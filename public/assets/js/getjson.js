@@ -24,29 +24,29 @@ async function postData(url) {
 	return response.json();
 }
 
-$(document).ready(function () {
-	// Get restaurant categories
-	postData($domain + '/categories')
-	.then(data=> {
-		$.each(data.categories.map((o) => o.categories), function(index, category) {
-			let $name = category.name;
+// $(document).ready(function () {
+// 	// Get restaurant categories
+// 	postData($domain + '/categories')
+// 	.then(data=> {
+// 		$.each(data.categories.map((o) => o.categories), function(index, category) {
+// 			let $name = category.name;
 
-			$('#category-filter').append('<input type="checkbox" name="category" id="' + index + '"value = "' + index + '"><label for="' + index + '">' + $name + '</label>')
-		})
-	})
+// 			$('#category-filter').append('<input type="checkbox" name="category" id="' + index + '"value = "' + index + '"><label for="' + index + '">' + $name + '</label>')
+// 		})
+// 	})
 
-	// Get restaurant cuisines
-	postData($domain + '/cuisines?city_id=297') // query cuisines in Adelaide only
-	.then(data=> {
-		$.each(data.cuisines.map((o) => o.cuisine), function(index, cuisine) {
-			let $name = cuisine.cuisine_name;
+// 	// Get restaurant cuisines
+// 	postData($domain + '/cuisines?city_id=297') // query cuisines in Adelaide only
+// 	.then(data=> {
+// 		$.each(data.cuisines.map((o) => o.cuisine), function(index, cuisine) {
+// 			let $name = cuisine.cuisine_name;
 
-			$('#cuisines-filter').append('<input type="checkbox" name="cuisines" id="' + index + '"value = "' + index + '">' + $name + '</label>')
-		})
-	})
+// 			$('#cuisines-filter').append('<input type="checkbox" name="cuisines" id="' + index + '"value = "' + index + '">' + $name + '</label>')
+// 		})
+// 	})
 
-	loadRestaurant();
-});
+// 	loadRestaurant();
+// });
 
 // Load restaurant results
 function loadRestaurant() {
