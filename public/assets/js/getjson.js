@@ -54,12 +54,17 @@ function loadRestaurant() {
 	postData($url + $filter)
 	.then(data=> {
 		data.restaurants = filterRange(data.restaurants);
-		$.each(data.restaurants.map((o) => o.restaurant), function(index, restaurant) {
-			let $name = restaurant.name;
-			let $id = restaurant.id;
+		if(data.restaurants.length > 1) {
+			$('#restaurant-list').append('<li><strong>RESULTS</strong></li>');
+			$.each(data.restaurants.map((o) => o.restaurant), function(index, restaurant) {
+				let $name = restaurant.name;
+				let $id = restaurant.id;
 
-			$('#restaurant-list').append('<li class="display__restaurant" id="' + $id + '">' + $name + '</li>');
-		})
+				$('#restaurant-list').append('<li class="display__restaurant" id="' + $id + '">' + $name + '</li>');
+			})
+		} else {
+			$('#restaurant-list').append('<li><strong>NO RESULTS FOUND</strong></li>');
+		}
 	})
 }
 
@@ -77,13 +82,25 @@ function getRestaurant(param) {
 		let $opening = data.timings;
 
 		$('.display__details-image img').attr('src', $thumbnail);
-		$('.display__details-name').text($name);
-		$('.display__details-address').text($address);
-		$('.display__details-bookings').text($bookings);
-		$('.display__details-delivery').text($delivery);
-		$('.display__details-cuisines').text($cuisines);
-		$('.display__details-phone').text($phone);
-		$('.display__details-opening').text($opening);
+		$('#restaurant-name').text($name);
+		$('#restaurant-address').text($address);
+		if( $bookings == 0) {
+			$('#restaurant-bookings').addClass('false');
+			$('#restaurant-bookings').text('No bookings');
+		} else {
+			$('#restaurant-bookings').addClass('true');
+			$('#restaurant-bookings').text('Bookings available');
+		}
+		if( $delivery == 0) {
+			$('#restaurant-delivery').addClass('false');
+			$('#restaurant-delivery').text('No delivery');
+		} else {
+			$('#restaurant-delivery').addClass('true');
+			$('#restaurant-delivery').text('Delivery available');
+		}
+		$('#restaurant-cuisines').text($cuisines);
+		$('#restaurant-phone').text($phone);
+		$('#restaurant-opening').text($opening);
 	})
 }
 

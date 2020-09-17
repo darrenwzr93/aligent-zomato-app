@@ -30,6 +30,9 @@ $(document).on('click','.display__restaurant',function(){
 	let $id = $(this).attr('id');
 	let $param = '/restaurant?res_id=' + $id;
 
+	$('.display__restaurant').removeClass('active');
+	$(this).addClass('active');
+	$('.display__details-results').css('display', 'flex');
 	getRestaurant($param);
 });
 
