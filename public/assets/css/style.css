@@ -1,5 +1,21 @@
 body {
 	font-family: sans-serif;
+	font-size: 14px;
+	color: #4e5456;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #373737;
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: 5px;
 }
 
 .main {
@@ -18,7 +34,6 @@ body {
 .filter .checkbox {
 	display: flex;
 	align-items: center;
-	font-size: 14px;
 	min-width: 150px;
 	margin-bottom: 5px;
 }
@@ -47,7 +62,6 @@ body {
 .filter__right .slider-value {
 	display: flex;
 	justify-content: space-between;
-	font-size: 14px;
 	margin-top: 10px;
 }
 
@@ -70,7 +84,131 @@ body {
 	top: -0.2em;
 }
 
+.display {
+	display: flex;
+}
+
+.display__restaurants {
+	display: flex;
+	flex-flow: column;
+	list-style: none;
+	background-color: #e5e5e5;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+	max-height: 600px;
+	width: 30%;
+	overflow-y: scroll;
+}
+
+.display__restaurants li {
+	padding: 15px 40px 15px 40px;
+	border-bottom: 1px solid #b8bbbc;
+}
+
+.display__restaurant:hover, .display__restaurant.active {
+	cursor: pointer;
+	color: #fff;
+	background-color: #4bb5b1;
+}
+
+.display__details {
+	padding: 40px;
+	flex: 1;
+	background-color: #f1f1f1;
+}
+
+.display__details-results {
+	display: none;
+}
+
+.display__details-image {
+	position: relative;
+	width: 50%;
+	height: 0;
+	padding-bottom: 50%;
+}
+
+.display__details-image img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+}
+
+.display__details-content {
+	width: 50%;
+	margin-left: 40px;
+}
+
+.display__details h1 {
+	font-size: 30px;
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+
+.display__details h5 {
+	margin-bottom: 5px;
+}
+
+.display__details-text {
+	font-size: 16px;
+}
+
+#restaurant-bookings {
+	margin-top: 20px;
+	font-size: 14px;
+}
+
+#restaurant-bookings.false:before {
+	content: '\2716';
+	color: #e23838;
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+#restaurant-bookings.true:before {
+	content: '\2714';
+	color: #50bf55;
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+#restaurant-delivery {
+	margin-bottom: 20px;
+	font-size: 14px;
+}
+
+#restaurant-delivery.false:before {
+	content: '\2716';
+	color: #e23838;
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+#restaurant-delivery.true:before {
+	content: '\2714';
+	color: #50bf55;
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	padding: 5px;
+}
+
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background: #d5d5d5;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: #b2b6b7;
+}
+
 @media only screen and (max-width: 768px) {
-
-
 }
