@@ -61,7 +61,6 @@ function loadRestaurant() {
 	for(var i = 0; i < 5; i++) {
 		postData($url + $filter + '&start=' + $start)
 		.then(data=> {
-			console.log(data);
 			data.restaurants = filterRange(data.restaurants);
 			if(data.restaurants.length > 1) {
 				$.each(data.restaurants.map((o) => o.restaurant), function(index, restaurant) {
